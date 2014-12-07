@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import org.joda.time.DateTime;
 
 public class TestTaskItem {
 
@@ -34,6 +35,15 @@ public class TestTaskItem {
 
         task.setID(identifier);
         assertEquals(task.getID(), identifier);
+    }
+
+    @Test
+    public void settingAndGettingCompletionDate() {
+        TaskItem task = newTask();
+        DateTime now  = new DateTime();
+
+        task.setCompletedAt(now);
+        assertEquals(task.getCompletedAt(), now);
     }
 
     private TaskItem newTask() {

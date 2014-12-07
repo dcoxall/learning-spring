@@ -1,9 +1,12 @@
 package com.darrencoxall.learningspring;
 
+import org.joda.time.DateTime;
+
 public class TaskItem {
 
-    private long   identifier;
-    private String description;
+    private long     identifier;
+    private String   description;
+    private DateTime completionDateTime;
 
     public void setID(long id) {
         this.identifier = id;
@@ -19,6 +22,14 @@ public class TaskItem {
 
     public String getDescription() {
         return this.description;
+    }
+
+    public void setCompletedAt(DateTime dateTime) {
+        this.completionDateTime = dateTime;
+    }
+
+    public DateTime getCompletedAt() {
+        return this.completionDateTime;
     }
 
 }
