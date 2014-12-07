@@ -18,6 +18,15 @@ public class TestTaskItem {
         assertEquals(task.getDescription(), description);
     }
 
+    @Test
+    public void settingAndGettingID() {
+        TaskItem task       = newTask();
+        long     identifier = 1234;
+
+        task.setID(identifier);
+        assertEquals(task.getID(), identifier);
+    }
+
     private TaskItem newTask() {
         return new TaskItem();
     }
