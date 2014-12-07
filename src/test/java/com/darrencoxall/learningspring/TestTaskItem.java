@@ -27,7 +27,7 @@ public class TestTaskItem {
         String   description = "  \t lots of whitespace\t\t\r\n";
 
         task.setDescription(description);
-        assertEquals(task.getDescription(), description.trim());
+        assertEquals(task.getDescription(), "lots of whitespace");
     }
 
     @Test
