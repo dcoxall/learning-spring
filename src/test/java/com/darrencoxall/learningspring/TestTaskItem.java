@@ -1,11 +1,13 @@
 package com.darrencoxall.learningspring;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
-import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+
 import org.joda.time.DateTime;
 
 public class TestTaskItem {
@@ -39,11 +41,27 @@ public class TestTaskItem {
 
     @Test
     public void settingAndGettingCompletionDate() {
-        TaskItem task = newTask();
-        DateTime now  = new DateTime();
+        TaskItem task             = newTask();
+        DateTime creationDateTime = DateTime.now();
 
-        task.setCompletedAt(now);
-        assertEquals(task.getCompletedAt(), now);
+        task.setCompletedAt(creationDateTime);
+        assertEquals(task.getCompletedAt(), creationDateTime);
+    }
+
+    @Test
+    public void completionFlag() {
+        TaskItem task = newTask();
+        assertFalse(task.isCompleted());
+
+        task.setCompletedAt(DateTime.now().minusDays(1));
+        assertTrue(task.isCompleted());
+
+        // Task is completed tomorrow
+        task.setCompletedAt(
+            task.getCompletedAt().plusDays(1)
+        );
+        // Task isn't completed yet
+        assertFalse(task.isCompleted());
     }
 
     private TaskItem newTask() {

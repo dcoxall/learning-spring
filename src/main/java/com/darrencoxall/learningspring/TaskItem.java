@@ -32,4 +32,9 @@ public class TaskItem {
         return this.completionDateTime;
     }
 
+    public Boolean isCompleted() {
+        return completionDateTime != null &&
+            completionDateTime.isBeforeNow();
+    }
+
 }
