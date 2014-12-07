@@ -14,7 +14,7 @@ public class TaskItem {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.description = description.trim();
     }
 
     public String getDescription() {

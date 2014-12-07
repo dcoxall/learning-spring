@@ -19,6 +19,15 @@ public class TestTaskItem {
     }
 
     @Test
+    public void descriptionIsTrimmed() {
+        TaskItem task        = newTask();
+        String   description = "  \t lots of whitespace\t\t\r\n";
+
+        task.setDescription(description);
+        assertEquals(task.getDescription(), description.trim());
+    }
+
+    @Test
     public void settingAndGettingID() {
         TaskItem task       = newTask();
         long     identifier = 1234;
